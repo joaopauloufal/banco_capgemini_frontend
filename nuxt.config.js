@@ -1,4 +1,6 @@
-import colors from 'vuetify/es5/util/colors'
+import pt from 'vuetify/es5/locale/pt'
+
+require('dotenv').config()
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -9,8 +11,8 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - banco_capgemini_frontend',
-    title: 'banco_capgemini_frontend',
+    titleTemplate: '',
+    title: 'Banco Capgemini',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,10 +25,13 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '@/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/materialIcons',
+    { src: '~/plugins/vuetifyToastSnackbarPlugin', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,11 +50,14 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'vue-currency-input/nuxt'
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
@@ -59,6 +67,17 @@ export default {
         light: {
         }
       }
+    },
+    lang: {
+      locales: { pt },
+      current: 'pt'
+    },
+    treeShake: {
+      components: [
+        'VSnackbar',
+        'VBtn',
+        'VIcon'
+      ]
     }
   },
 
