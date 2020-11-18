@@ -1,20 +1,18 @@
-# banco_capgemini_frontend
+# Banco Capgemini (Frontend APP)
 
-## Build Setup
+[![GitHub release](https://img.shields.io/github/release/joaopauloufal/banco_capgemini_frontend/all.svg)](https://api.github.com/repos/joaopauloufal/banco_capgemini_frontend/StrapDown.js/releases/latest)
 
-```bash
-# install dependencies
-$ npm install
+Tecnologias utilizadas:
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+- [VueJS](https://vuejs.org).
+- [NuxtJS](https://nuxtjs.org).
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+Você pode acessar o respositório do Backend API do projeto [clicando aqui](https://github.com/joaopauloufal/banco_capgemini_backend).
 
-# generate static project
-$ npm run generate
-```
+Procedimentos necessários para configurar e executar o projeto para o desenvolvimento:
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- Primeiro, você precisa executar o server do Backend API (vide link acima).
+- É preciso ter NPM instalado no sistema operacional (a versão utilizada foi a 6.14.8).
+- Após clonar o repositório, navegue até o diretório raiz do projeto e execute no console "npm install".
+- Após instalar as dependências, execute "npm run dev".
+- Navegue até a URL: [localhost:3000](http://localhost:3000).
