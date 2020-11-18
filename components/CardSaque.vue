@@ -83,7 +83,7 @@ export default {
     },
 
     formErrors () {
-      return this.$store.state.minhasContas.errors
+      return this.$store.state.contas.errors
     }
 
   },
@@ -99,7 +99,7 @@ export default {
     open (contaId) {
       this.show = true
       this.getSaldoFromApi(contaId)
-      this.$store.dispatch('minhasContas/clearErrors')
+      this.$store.dispatch('contas/clearErrors')
     },
 
     async getSaldoFromApi (contaId) {
@@ -116,15 +116,15 @@ export default {
         id: this.contaId,
         valor: this.valor
       }
-      await this.$store.dispatch('minhasContas/storeSaque', data).then((response) => {
-        this.$store.dispatch('minhasContas/clearErrors')
+      await this.$store.dispatch('contas/storeSaque', data).then((response) => {
+        this.$store.dispatch('contas/clearErrors')
         this.close()
         Toast.showSuccessMessage(response.data.message)
         this.$parent.$parent.$parent.$parent.getDataFromApi()
       }).catch((error) => {
         if (error.response.status === 422) {
           this.valor = 0.0
-          this.$store.commit('minhasContas/SET_ERRORS', error.response.data.errors)
+          this.$store.commit('contas/SET_ERRORS', error.response.data.errors)
           Toast.showWarningMessage(error.response.data.message)
         }
       })

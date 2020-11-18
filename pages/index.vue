@@ -8,6 +8,21 @@
           align="center"
           justify="center"
         >
+          <v-col cols="4">
+            <v-text-field
+              v-model="search"
+              label="Buscar por Nº da Conta..."
+              append-icon="search"
+              single-line
+              hide-details
+              clearable
+            />
+          </v-col>
+        </v-row>
+        <v-row
+          align="center"
+          justify="center"
+        >
           <v-col
             cols="12"
           >
@@ -23,7 +38,7 @@
                 >
                   <v-layout justify-center>
                     <v-toolbar-title>
-                      MINHAS CONTAS
+                      CONTAS
                     </v-toolbar-title>
                   </v-layout>
                 </v-toolbar>
@@ -32,7 +47,7 @@
                     <v-row>
                       <template v-for="(item, indice) in contas">
                         <v-col :key="indice" cols="4">
-                          <card-minhas-contas
+                          <card-contas
                             :id="item.id"
                             :numero-conta="item.numero"
                             :numero-agencia="item.agencia.numero"
@@ -48,7 +63,7 @@
                   </div>
                   <div v-else>
                     <v-alert type="info">
-                      Você ainda não possui contas cadastradas.
+                      Não existem contas cadastradas.
                     </v-alert>
                   </div>
                 </v-card-text>
@@ -63,7 +78,7 @@
 
 <script>
 
-import CardMinhasContas from '~/components/CardMinhasContas.vue'
+import CardContas from '~/components/CardContas.vue'
 import CardConsultaSaldo from '~/components/CardConsultaSaldo.vue'
 import CardSaque from '~/components/CardSaque.vue'
 import CardDeposito from '~/components/CardDeposito.vue'
@@ -71,16 +86,28 @@ import CardDeposito from '~/components/CardDeposito.vue'
 export default {
 
   components: {
-    CardMinhasContas, CardConsultaSaldo, CardSaque, CardDeposito
+    CardContas, CardConsultaSaldo, CardSaque, CardDeposito
   },
+
+  data: () => ({
+    search: ''
+  }),
 
   computed: {
     contas () {
-      return this.$store.state.minhasContas.dataList
+      return this.$store.state.contas.dataList
     },
 
     loading () {
-      return this.$store.state.minhasContas.loading
+      return this.$store.state.contas.loading
+    }
+  },
+
+  watch: {
+    search: {
+      handler () {
+        this.getDataFromApi()
+      }
     }
   },
 
@@ -90,7 +117,10 @@ export default {
 
   methods: {
     async getDataFromApi () {
-      await this.$store.dispatch('minhasContas/getData')
+      const data = {
+        search: this.search
+      }
+      await this.$store.dispatch('contas/getData', data)
     }
   }
 }

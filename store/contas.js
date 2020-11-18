@@ -29,9 +29,13 @@ export const mutations = {
 }
 
 export const actions = {
-  getData (context) {
+  getData (context, { search }) {
     context.commit('SET_LOADING', true)
-    this.$axios.get('api/v1/contas?with=agencia&orderBy=id&sortedBy=desc').then(
+    let searchValue = ''
+    if (search !== '') {
+      searchValue = '&search=' + search
+    }
+    this.$axios.get('api/v1/contas?with=agencia&orderBy=id&sortedBy=desc' + searchValue).then(
       (response) => {
         context.commit('UPDATE_DATA_LIST', response.data)
         context.commit('SET_LOADING', false)
