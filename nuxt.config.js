@@ -9,6 +9,8 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  loading: '~/components/LoadingBar.vue',
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '',
@@ -31,7 +33,8 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/materialIcons',
-    { src: '~/plugins/vuetifyToastSnackbarPlugin', ssr: false }
+    { src: '~/plugins/vuetifyToastSnackbarPlugin', ssr: false },
+    '~/plugins/axios'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
