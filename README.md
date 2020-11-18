@@ -13,6 +13,6 @@ Procedimentos necessários para configurar e executar o projeto para o desenvolv
 
 - Primeiro, você precisa executar o server do Backend API (vide link acima).
 - É preciso ter NPM instalado no sistema operacional (a versão utilizada foi a 6.14.8).
-- Após clonar o repositório, navegue até o diretório raiz do projeto e execute no console "npm install".
+- Após clonar o repositório, navegue até o diretório raiz do projeto e execute no console "npm install" - Após ter instalado o NPM no seu sistema operacional.
 - Após instalar as dependências, execute "npm run dev".
 - Navegue até a URL: [localhost:3000](http://localhost:3000).
