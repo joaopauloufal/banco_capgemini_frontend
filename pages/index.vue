@@ -118,7 +118,7 @@ export default {
   methods: {
     async getDataFromApi () {
       const data = {
-        search: this.search
+        search: this.search != null ? this.search : ''
       }
       await this.$store.dispatch('contas/getData', data)
     }

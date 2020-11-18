@@ -46,11 +46,11 @@ export const actions = {
   },
 
   storeSaque (context, data) {
-    return this.$axios.post('api/v1/conta/sacar/' + data.id, data)
+    return this.$axios.put('api/v1/conta/sacar/' + data.id, data)
   },
 
   storeDeposito (context, data) {
-    return this.$axios.post('api/v1/conta/depositar/' + data.id, data)
+    return this.$axios.put('api/v1/conta/depositar/' + data.id, data)
   },
 
   clearErrors (context) {
