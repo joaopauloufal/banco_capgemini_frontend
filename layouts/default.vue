@@ -58,7 +58,7 @@
             Copyright © {{ new Date().getFullYear() }}. Todos os direitos reservados.
           </v-col>
           <v-col cols="1">
-            Versão master
+            Versão 1.0.0
           </v-col>
         </v-row>
       </v-row>
